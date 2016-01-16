@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="app.js"></script>
+<title>TCV ETL DSR</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<style type="text/css">
+    .bs-example{
+    	margin: 20px;
+    }
+    .one {
+
+    	position: right;
+    	text-align: right;
+    }
+
+.table-bordered
+{
+    table-layout: fixed;
+    border: 1px solid black;
+     overflow: hidden;
+     width: 100px;
+     word-wrap:break-word;
+}
+
+</style>
+<script type="text/javascript">
+    function SetToBold () {
+        document.execCommand ('bold', false, null);
+    }
+
+function center () {
+        document.execCommand ('justifyCenter', false, null);
+    }
+
+function left () {
+        document.execCommand ('JustifyLeft', false, null);
+    }
+</script>
+
+</head>
+<body onload="load()">
+<h1><b>TCV ETL DSR</b></h1>
+<a href="index.html"><b><u>HOME</u></b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<a href="defects.html"><b><u>Defect Details</u></b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<a href="table.html"><b><u>Defects Summary</u></b></a><br/><br/>
+<div id="myform">
+<table>
+    <tr>
+        <td>Functionality:</td>
+        <td> <div style="border:1px inset #AAA;cursor:text;height:30px;width:173px;overflow:auto" contenteditable="true" onmouseup="SetToBold ();" id="F" for = "F"></div> </td>
+       <td><button class="btn btn-info", onclick="Javascript: updateRow()">Edit</button>&nbsp; <input type="text" id="Serial", placeholder ="Serial No." >
+<button class="btn btn-info", onclick="Javascript: edit()">Update</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td> 
+    <td><h4><font color="blue">Total Projects :</font> &nbsp; <span id="Z" style="color:blue"></span> &nbsp;<font color="green"> Green : </font><span id="Y" style="color:green"></span> &nbsp; <font color="orange"> Amber : </font><span id ="X" style="color:orange"></span> &nbsp;<font color="red">RED :</font> <span id="W" style="color:red"></span></h4>
+    </tr>
+    <tr>
+        <td>RAG/Phase:</td>
+      <td> <div style="border:1px inset #AAA;cursor:text;height:30px;width:173px;overflow:auto" contenteditable="true" onmouseup="SetToBold ();" id="R" for="R"></div> </td>  
+    </tr>
+    <tr>
+        <td>Code Availibility Date:</td>
+         <td> <div style="border:1px inset #AAA;cursor:text;height:30px;width:173px;overflow:auto" contenteditable="true" onmouseup="SetToBold ();" id="C" for="C"></div> </td>
+       <td> <button class="btn btn-info" onclick="Javascript: deleteRow()">Clear</button> <input type="text" id="pp" placeholder ="Serial No." >
+		</td>
+        <td><button class="btn btn-info" onclick="Javascript: commit()" style="float: right;">Commit/Update</button></td>
+        
+    </tr>
+    <tr>
+        <td>Planned SIT End Date:</td>
+         <td> <div style="border:1px inset #AAA;cursor:text;height:30px;width:173px;overflow:auto" contenteditable="true" onmouseup="SetToBold ();" id="P" for="P"></div> </td>
+        <td><button class="btn-xs" onclick="Javascript: center()" style="float: right">JustifyCenter</button>
+        </td>
+        <td><button class="btn-xs" onclick="Javascript: left()">JustifyLeft</button>
+        </td>
+
+    </tr>
+    <tr>
+        <td>(Total / Passed / Failed):</td>
+        <td> <div style="border:1px inset #AAA;cursor:text;height:62px;width:173px;overflow:auto" align="center" contenteditable="true" onmouseup="SetToBold ();" id="T" for="T">
+        <span style="color: blue;font-weight:bold">00</span>/<span style="color: green;font-weight:bold">00</span>/<span style="color: red;font-weight:bold">00</span><br/>
+        <span style="color: blue;font-weight:bold">00</span>/<span style="color: green;font-weight:bold">00</span>/<span style="color: red;font-weight:bold">00</span><br/>
+        <span style="color: blue;font-weight:bold">00</span>/<span style="color: green;font-weight:bold">00</span>/<span style="color: red;font-weight:bold">00</span><br/>   
+        </div> </td>
+    </tr>
+    <tr>
+        <td>(Total/Fixed/Open/Closed):</td>
+       <td> <div style="border:1px inset #AAA;cursor:text;height:80px;width:173px;overflow:auto" align="center"contenteditable="true" onmouseup="SetToBold ();" id="Total" for="Total"><b>Sev1:</b> &nbsp;<span style="color: black">00/</span><span style="color: green">00</span>/<span style="color: red">00</span>/<span style="color: blue">00</span><br/>
+       <b>Sev2:</b> &nbsp;<span style="color: black">00/</span><span style="color: green">00</span>/<span style="color: red">00</span>/<span style="color: blue">00</span><br/>
+       <b>Sev3:</b> &nbsp;<span style="color: black">00/</span><span style="color: green">00</span>/<span style="color: red">00</span>/<span style="color: blue">00</span><br/>
+       <b>Sev4:</b> &nbsp;<span style="color: black">00/</span><span style="color: green">00</span>/<span style="color: red">00</span>/<span style="color: blue">00</span><br/>
+       </td>
+       <td></td>
+       <td><button class="btn btn-warning" onclick="Javascript: ClearStorage()">Clear Storage</button>&nbsp;  &nbsp; <input type="password" id="pass" placeholder ="Password" style="width: 70px" >
+        </td>
+    </tr>
+    <tr>
+        <td>Summary:</td>
+        <td> <div style="border:1px inset #AAA;cursor:text;height:80px;width:177px;overflow:auto" contenteditable="true" onmouseup="SetToBold ();" id="S" for="S"></div></td><td></td>
+    </tr>
+    <tr>
+        <td>Owner:</td>
+       <td> <div style="border:1px inset #AAA;cursor:text;height:30px;width:173px;overflow:auto" contenteditable="true" onmouseup="SetToBold ();" id="O" for="O"></div> </td>
+         <td><button type = "submit" id ="a" class="btn btn-info" onclick="Javascript: addRow()">Add</button></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+
+</table>
+</div>
+<div id="mydata">
+<button class="btn btn-info "  onclick="Javascript:SelectContent('myTableData')">Mark DSR</button>
+<div class="one"><input type="text" id="pp1" align="right"  placeholder ="Serial No." ></div>
+<button type="button" class="btn btn-success  pull-right btn-sm " onclick="Javascript: Green()">Green</button>
+<button type="button" class="btn btn-warning  pull-right btn-sm RbtnMargin" onclick="Javascript: Amber()">Amber</button>
+<button type="button" class="btn btn-danger  pull-right btn-sm RbtnMargin" onclick="Javascript: Red()">Red</button>
+<button type="button" class="btn btn-primary pull-right btn-sm RbtnMargin" onclick="Javascript: Blue()">Blue</button>
+&nbsp;<br/><br/>
+<b><font size="3" color="blue"><u>TCV MDM ETL - SIT Status – <span id="time"></span></u></font></b>
+&nbsp;<br/><br/>
+<table id="myTableData" class="table-bordered , table-hover " border-color: "#d6e9c6">
+    <tr bgcolor="#4F4F2F" class="info">
+        <td width="130px"><b><font color="white"><center>Functionality</center></font></b></td>
+        <td width="80px"><b><font color="white"><center>Rag/Phase</center></font></b></td>
+        <td width="80px"><b><font color="white"><center>Code Availibility Date</center></font></b></td>
+        <td width="80px"><b><font color="white"><center>Planned SIT End Date</center></font></b></td>
+        <td width="180px"><b><font color="white"><center>(Total/Passed/Failed)</center></font></b></td>
+        <td width="190px"><b><font color="white"><center>(Total/Fixed/Open/Closed)</center></font></b></td>
+        <td width="180px"><b><font color="white"><center>Summary</center></font></b></td>
+        <td width="140px"><b><font color="white"><center>Owner</center></font></b></td>        
+        
+    </tr>
+</table>
+&nbsp;<br/>
+</div>
+<script type="text/javascript">
+    
+var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+
+    var yyyy = today.getFullYear();
+    if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+    var today = dd+'/'+mm+'/'+yyyy;
+    document.getElementById("time").innerHTML = today;
+</script>
+</html>                                		

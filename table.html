@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="app.js"></script>
+<title>Defects Summary </title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<style type="text/css">
+ .table-bordered
+{
+    table-layout: fixed;
+    border: 1px solid green;
+     overflow: hidden;
+     width: 900px;
+     word-wrap:break-word;
+}
+</style>
+</head>
+
+<body onload="load2()">
+
+<h1> Defects Summary </h1>
+<a href="index.html"><b><u>HOME</u></b></a>&nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;
+<a href="bootstrap.html"><b><u>DSR Main Page</u></b></a>&nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;
+<a href="defects.html"><b><u>Defect Details</u></b></a><br/><br/>
+<button class="btn btn-info" onclick="Javascript: total()" style="float: left">Update Total</button><br/><br/>
+<button class="btn btn-info "  onclick="Javascript:SelectContent('table2')">Mark Table</button><br/><br/>
+<table id="table2" class="table-bordered , table-hover " border-color: "blue" align="center">
+    <tr bgcolor="#003F87" class="info">
+        <td width="70px"><div contenteditable="true"></div></td>
+        <td width="120px"><b><font color="white"><center>Design</center></font></b></td>
+        <td width="120px"><b><font color="white"><center>Code</center></font></b></td>
+        <td width="120px"><b><font color="white"><center>Document</center></font></b></td>
+        <td width="120px"><b><font color="white"><center>Coding</center></font></b></td>
+    </tr>
+
+    <tr class="info">
+    	<td width="120px"><b><font color="black"><center><div contenteditable="true"> Severity 1 </div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+    </tr>
+
+    <tr class="info">
+    	<td width="120px"><b><font color="black"><center><div contenteditable="true"> Severity 2 </div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+    </tr>
+
+    <tr class="info">
+    	<td width="120px"><b><font color="black"><center><div contenteditable="true"> Severity 3 </div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+    </tr>
+
+    <tr class="info">
+    	<td width="120px"><b><font color="black"><center><div contenteditable="true"> Severity 4 </div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true">0</div></center></font></b></td>
+    </tr>
+
+    <tr class="info">
+    	<td width="120px"><b><font color="black"><center><div contenteditable="true"> Total </div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true" id="q1"></div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true" id="q2"></div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true" id="q3"></div></center></font></b></td>
+        <td width="120px"><b><font color="black"><center><div contenteditable="true" id="q4"></div></center></font></b></td>
+    </tr><br/><br/>
+</table>
+</body>
+</html>

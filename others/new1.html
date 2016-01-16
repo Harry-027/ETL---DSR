@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="app.js"></script>
+<title>TCV ETL DSR</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="jquery-1.11.2.min.js"></script>
+<style type="text/css">
+    .bs-example{
+    	margin: 20px;
+    }
+    .one {
+
+    	position: right;
+    	text-align: right;
+    }
+/*    .table-bordered  {
+    background-color: #fff;
+}
+.table-hover  {
+    background-color: #fff;
+}
+ 
+ .table-condensed  {
+    background-color: #fff;
+} 
+       */
+     
+
+th, td {
+    border:solid #000 !important;
+    border-width:0 1px 1px 0 !important;
+}
+</style>
+<script type="text/javascript">
+        function ModifySelection () {
+            var textarea = document.getElementById("R1");
+            //document.execCommand('bold');
+            if ('selectionStart' in textarea) {
+                    // check whether some text is selected in the textarea
+                if (textarea.selectionStart != textarea.selectionEnd) {
+                    //var t.innerHTML = textarea.value.substring (0, textarea.selectionStart);
+                    //t.innerHTML.style.fontWeight = 'bold';
+                    //var n = t.toString();
+                    
+                    //alert (n);
+                    var newText = textarea.value.substring (0, textarea.selectionStart) +
+                       textarea.value.substring  (textarea.selectionStart, textarea.selectionEnd)+
+                        textarea.value.substring (textarea.selectionEnd);
+                      //  var encoded = Encoder.htmlEncode(newText);
+                      //  alert(newText);
+                     // var n = newText.toString();
+                     textarea.value = ParseToHtml(newText);
+                }
+            }
+           /*   if ('selectionStart' in textarea) {
+                    // check whether some text is selected in the textarea
+                if (textarea.selectionStart != textarea.selectionEnd) {
+                    var newText = textarea.value.substring (0, textarea.selectionStart) + 
+                        "[start]" + textarea.value.substring  (textarea.selectionStart, textarea.selectionEnd) + "[end]" +
+                        textarea.value.substring (textarea.selectionEnd);
+                    textarea.value = newText;
+                }
+            }*/
+            else {  // Internet Explorer before version 9
+                    // create a range from the current selection
+                var textRange = document.selection.createRange ();
+                    // check whether the selection is within the textarea
+                var rangeParent = textRange.parentElement ();
+                if (rangeParent === textarea) {
+                    textRange.text = "[start]" + textRange.text + "[end]";
+                }
+            }
+        }
+      
+
+
+    </script>
+</head>
+<body onload="load()">
+<select onchange="formatDoc('forecolor',this[this.selectedIndex].value);this.selectedIndex=0;">
+<option class="heading" selected>- color -</option>
+<option value="red">Red</option>
+<option value="blue">Blue</option>
+<option value="green">Green</option>
+<option value="black">Black</option>
+</select>
+<img class="intLink" title="Redo" onclick="formatDoc('redo');" src="data:image/gif;base64,R0lGODlhFgAWAMIHAB1ChDljwl9vj1iE34Kl8aPD+7/I1////yH5BAEKAAcALAAAAAAWABYAAANKeLrc/jDKSesyphi7SiEgsVXZEATDICqBVJjpqWZt9NaEDNbQK1wCQsxlYnxMAImhyDoFAElJasRRvAZVRqqQXUy7Cgx4TC6bswkAOw==" />
+<h1><b>TCV ETL DSR DEFECT PAGE :</b></h1>
+<br/><br/>
+<div id="myform2">
+<button onclick="ModifySelection ()">Modify the current selection</button>
+<table>
+    <tr>
+        <td>Defect ID:</td>
+        <td><input type="text" id="F1"></td>
+       <td> <button class="btn btn-info", onclick="Javascript: updateRow1()">Edit</button>&nbsp; <input type="text" id="Serial2", placeholder ="Serial No." >
+<button class="btn btn-info", onclick="Javascript: edit1()">Update</button> </td>
+    </tr>
+    <tr>
+        <td>Summary:</td>
+       <td><textarea name="text" rows="2" cols="25" id="R1"></textarea></td>
+       
+    </tr>
+    <tr>
+        <td>Severity:</td>
+        <td><input type="text" id="C1">&nbsp;&nbsp;&nbsp;<button class="btn btn-info" onclick="Javascript: addRow1()">Add</button></td></td>
+       
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+</div>
+<div id="mydata1">
+<button class="btn btn-info" onclick="Javascript: deleteRow1()">Clear</button> <input type="text" id="pp" placeholder ="Serial No." ><br/><br/>
+<button class="btn btn-info" onclick="Javascript:SelectContent1('myTableData1')">Mark Defects</button><br/><br/>
+<b>Defect Details:</b>
+&nbsp;<br/><br/>
+<table id="myTableData1" class="table-bordered , table-hover , table-condensed ">
+    <tr bgcolor ="red" class="info">
+        <td style="width: 10%"><b>Defect ID</b></td>
+        <td style="width: 50%"><b>Summary</b></td>
+        <td style="width: 10%"><b>Severity</b></td>
+    </tr>
+
+</table> 
+</div>
+</body>
+</html>                                		

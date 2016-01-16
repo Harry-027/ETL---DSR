@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="app.js"></script>
+<title>TCV ETL DSR DEFECTS</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<style type="text/css">
+    .bs-example{
+    	margin: 20px;
+    }
+    .one {
+
+    	position: right;
+    	text-align: right;
+    }
+
+    .table-bordered
+{
+    table-layout: fixed;
+    border: 1px solid green;
+     overflow: hidden;
+     width: 900px;
+     word-wrap:break-word;
+}
+</style>
+</head>
+<body onload="load1()">
+<h1><b>DSR DEFECTS:</b></h1>
+<a href="index.html"><b><u>HOME</u></b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<a href="bootstrap.html"><b><u>DSR Main Page</u></b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<a href="table.html"><b><u>Defects Summary</u></b></a>
+<br/><br/>
+<div id="myform2">
+<table>
+    <tr>
+        <td>Defect ID:</td>
+        <td><input type="text" id="F1"></td>
+       <td> <button class="btn btn-info", onclick="Javascript: updateRow1()">Edit</button>&nbsp; <input type="text" id="Serial2", placeholder ="Serial No." >
+<button class="btn btn-info", onclick="Javascript: edit1()">Update</button> </td>
+    </tr>
+    <tr>
+        <td>Summary:</td>
+       <td><textarea rows="2" cols="25" id="R1"></textarea></td>
+    </tr>
+    <tr>
+        <td>Severity:</td>
+        <td><input type="text" id="C1">&nbsp;&nbsp;&nbsp;<button class="btn btn-info" onclick="Javascript: addRow1()">Add</button></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+</div>
+<div id="mydata1">
+<button class="btn btn-info" onclick="Javascript: deleteRow1()">Clear</button> <input type="text" id="pp" placeholder ="Serial No." ><br/><br/>
+<button class="btn btn-info" onclick="Javascript:SelectContent1('myTableData1')">Mark Defects</button><br/><br/>
+
+<b><font size="3"> Defect Details:</font></b>
+&nbsp;<br/><br/>
+<table id="myTableData1" class="table-bordered , table-hover , table-condensed">
+    <tr class="success" bgcolor ="#C9C9C9">
+        <td style="width: 10%"><b>Defect ID</b></td>
+        <td style="width: 50%"><b>Summary</b></td>
+        <td style="width: 10%"><b>Severity</b></td>
+    </tr>
+</table>
+&nbsp;<br/>
+</div>
+
+</body>
+</html>                                		
